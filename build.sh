@@ -3,7 +3,7 @@ case "$SHED_BUILDMODE" in
     toolchain)
         make -j $SHED_NUMJOBS && \
         make PREFIX="${SHED_FAKEROOT}/tools" install || exit 1
-        rm -v "${SHED_FAKEROOT}/tools/bin/{bzcmp,bzegrep,bzfgrep,bzless}"
+        rm -v "${SHED_FAKEROOT}"/tools/bin/{bzcmp,bzegrep,bzfgrep,bzless}
         ln -sv bzdiff "${SHED_FAKEROOT}/tools/bin/bzcmp"
         ln -sv bzgrep "${SHED_FAKEROOT}/tools/bin/bzegrep"
         ln -sv bzgrep "${SHED_FAKEROOT}/tools/bin/bzfgrep"
@@ -17,11 +17,11 @@ case "$SHED_BUILDMODE" in
         make clean
         make -j $SHED_NUMJOBS || return 1
         make PREFIX="${SHED_FAKEROOT}/usr" install || return 1
-        mkdir -pv "${SHED_FAKEROOT}/{bin,lib}"
+        mkdir -pv "${SHED_FAKEROOT}"/{bin,lib}
         cp -v bzip2-shared "${SHED_FAKEROOT}/bin/bzip2"
         cp -av libbz2.so* "${SHED_FAKEROOT}/lib"
         ln -sv ../../lib/libbz2.so.1.0 "${SHED_FAKEROOT}/usr/lib/libbz2.so"
-        rm -v "${SHED_FAKEROOT}/usr/bin/{bunzip2,bzcat,bzip2}"
+        rm -v "${SHED_FAKEROOT}"/usr/bin/{bunzip2,bzcat,bzip2}
         ln -sv bzip2 "${SHED_FAKEROOT}/bin/bunzip2"
         ln -sv bzip2 "${SHED_FAKEROOT}/bin/bzcat"
         ;;
