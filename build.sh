@@ -26,3 +26,7 @@ else
     ln -sv bzip2 "${SHED_FAKE_ROOT}/bin/bunzip2" &&
     ln -sv bzip2 "${SHED_FAKE_ROOT}/bin/bzcat"
 fi
+# Prune Documentation
+if [ -z "${SHED_PKG_LOCAL_OPTIONS[docs]}" ]; then
+    rm -rf "${SHED_FAKE_ROOT}/usr/share/doc"
+fi
