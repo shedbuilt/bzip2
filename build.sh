@@ -8,7 +8,7 @@ if [ -n "${SHED_PKG_LOCAL_OPTIONS[toolchain]}" ]; then
     ln -sv bzdiff "${SHED_FAKE_ROOT}/tools/bin/bzcmp" &&
     ln -sv bzgrep "${SHED_FAKE_ROOT}/tools/bin/bzegrep" &&
     ln -sv bzgrep "${SHED_FAKE_ROOT}/tools/bin/bzfgrep" &&
-    ln -sv bzmore "${SHED_FAKE_ROOT}/tools/bin/bzless"
+    ln -sv bzmore "${SHED_FAKE_ROOT}/tools/bin/bzless" || exit 1
 else
     # Patch to enable installation of man pages
     patch -Np1 -i "${SHED_PKG_PATCH_DIR}/bzip2-1.0.6-install_docs-1.patch" &&
@@ -24,7 +24,7 @@ else
     ln -sv ../../lib/libbz2.so.1.0 "${SHED_FAKE_ROOT}/usr/lib/libbz2.so" &&
     rm -v "${SHED_FAKE_ROOT}"/usr/bin/{bunzip2,bzcat,bzip2} &&
     ln -sv bzip2 "${SHED_FAKE_ROOT}/bin/bunzip2" &&
-    ln -sv bzip2 "${SHED_FAKE_ROOT}/bin/bzcat"
+    ln -sv bzip2 "${SHED_FAKE_ROOT}/bin/bzcat" || exit 1
 fi
 # Prune Documentation
 if [ -z "${SHED_PKG_LOCAL_OPTIONS[docs]}" ]; then
